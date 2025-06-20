@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import Logo from "../../public/vite.svg";
+import Logo from "../assets/react.svg";
 
 const NavBar = () => {
   const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
