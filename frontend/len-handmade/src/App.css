@@ -19,7 +19,7 @@
   }
 
   section {
-    @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw];
+    @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw] bg-[url('/src/assets/LEN.png')];
   }
 
   img {

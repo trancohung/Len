@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router";
 import "./App.css";
 import HomeLayout from "./layouts/HomeLayout";
 import Home from "./pages/Home";
+import UserAuthForm from "./pages/UserAuthForm";
 
 function App() {
   return (
@@ -9,8 +10,8 @@ function App() {
       <Route path="/" element={<HomeLayout />}>
         <Route index element={<Home />} />
       </Route>
-      <Route path="/register" element={<h1>Register</h1>} />
-      <Route path="/login" element={<h1>Log In</h1>} />
+      <Route path="/register" element={<UserAuthForm type="register" />} />
+      <Route path="/login" element={<UserAuthForm type="login" />} />
     </Routes>
   );
 }
