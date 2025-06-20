@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "@flaticon/flaticon-uicons/css/all/all";
+
+@layer components {
+  * {
+    @apply m-0 p-0 box-border text-base;
+  }
+
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply font-normal text-black;
+  }
+
+  i {
+    @apply mt-0.5;
+  }
+
+  section {
+    @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw];
+  }
+
+  img {
+    @apply w-full h-full object-cover;
+  }
+
+  .navbar {
+    @apply flex items-center w-full px-[5vw] py-5 h-20 border-b border-gray-100 shadow-sm bg-white sticky top-0 z-10 gap-12;
+  }
+
+  .hide {
+    @apply opacity-0 pointer-events-none duration-100;
+  }
+
+  .show {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  .link {
+    @apply text-gray-500 hover:text-black hover:bg-gray-200 p-3 px-4 block opacity-75;
+  }
+}
