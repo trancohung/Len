@@ -9,6 +9,19 @@ const userController = {
       res.status(500).json({ message: "Internal server error" });
     }
   },
+  register: async(req, res) => {
+    try{
+      const {phone, password} = req.body;
+      
+      if(!phone || !password){
+        return res.status(400).json({error: 'phone and password are required'});
+      }
+
+    }catch (err)
+    {
+
+    }
+  }
 };
 
 export default userController;
