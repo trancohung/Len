@@ -1,24 +1,23 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-const userSchema = new mongoose.Schema(
-  {
-    email: { type: String, trim: true, required: true, unique: true },
-    password: { type: String, trim: true, required: true, select: false },
-    role: { type: String, enum: ["Vendor", "Admin"], default: "Vendor" },
-    createDate: { type: Date },
-    endDate: { type: Date },
-    active: { type: Boolean, default: true },
-  },
-  { timestamp: false }
-);
-
-const userModel = mongoose.model("User", userSchema);
+const userSchema = new mongoose.Schema({
+  email: { type: String, trim: true, required: true, unique: true },
+  password: { type: String, trim: true, required: true, select: false },
+  role: { type: String, enum: ["Vendor", "Admin"], default: "Vendor" },
+  createDate: { type: Date },
+  endDate: { type: Date },
+  active: { type: Boolean, default: true },
+});
 
 userSchema.pre("save", async function (next) {
   if (this.isNew) {
-    const currentDate = new Date();
-    this.createDate = currentDate;
-    this.endDate = new Date(currentDate.setMonth(currentDate.getMonth() + 6)); // hết hạn sau 6 tháng
+    const createAt = new Date();
+    const expireAt = new Date(createAt);
+    expireAt.setMonth(createAt.getMonth() + 6); // hết hạn sau 6 tháng
+
+    this.createDate = createAt;
+    this.endDate = expireAt;
   }
 
   // nếu password không được sửa đổi, không cần mã hóa
@@ -28,5 +27,7 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
+const userModel = mongoose.model("User", userSchema);
 
 export default userModel;
