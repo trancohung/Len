@@ -1,8 +1,11 @@
 import express from "express";
-import userRoute from "./user.route.js";
-
+import authRoute from "./auth.route.js";
+import productRoute from "./product.route.js";
+import storeRoute from "./store.route.js";
 const RootRouter = express.Router();
 
-RootRouter.use("/users", userRoute);
+RootRouter.use("/auth", authRoute);
+RootRouter.use("/products", productRoute);
+RootRouter.use("/stores", storeRoute);
 
 export default RootRouter;
